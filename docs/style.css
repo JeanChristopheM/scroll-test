@@ -8,6 +8,15 @@
 }
 body, html {
     margin:0;
+    font-family: 'Arimo', sans-serif;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+    padding:2rem;
 }
 main {
     overflow: hidden;
@@ -15,7 +24,7 @@ main {
     font-size:10rem;
     position:relative;
     min-height:100vh;
-    margin: 1000px 0;
+    margin: 500px 0 100px 0;
 }
 p {
     margin:0;

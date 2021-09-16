@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScrollForMe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2028433eb8.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <p>scroll down</p>
+        <p class="test">scroll down</p>
+        <i class="fas fa-arrow-down"></i>
     </header>
     <main>
         <p class="scrollMe1">___PBSC: registered: micromobility impact</p>
         <p class="scrollMe2">___PBSC: registered: micromobility impact</p>
     </main>
+
     <script>
         let p1 = document.querySelector('.scrollMe1');
         let p2 = document.querySelector('.scrollMe2');
@@ -62,12 +68,11 @@
                 pos -= 10;
                 pos2 -= 10;
             }
-            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+            lastScrollTop = st;
         }, false);
 
         let measurement = (window.innerWidth / p1.scrollWidth).toString();
         console.log(`Amount of clones needed : ${parseInt(measurement.slice(0, 1)) + 1}`);
-        
     </script>
 </body>
 </html>
