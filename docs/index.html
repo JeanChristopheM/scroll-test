@@ -8,31 +8,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <p>scroll down</p>
+    </header>
     <main>
-        <p class="scrollMe1" style="transform: translateX(10px);">PBSC: registered: micromobility impact</p>
-        <p class="scrollMe2" style="transform: translateX(00px);">PBSC: registered: micromobility impact</p>
+        <p class="scrollMe1">___PBSC: registered: micromobility impact</p>
+        <p class="scrollMe2">___PBSC: registered: micromobility impact</p>
     </main>
     <script>
-        var scollPosY = 0;
+        let p1 = document.querySelector('.scrollMe1');
+        let p2 = document.querySelector('.scrollMe2');
         let pos = 0;
-        let pos2 = -2000;
-        let moveableObject1 = document.querySelector('.scrollMe1');
-        let moveableObject2 = document.querySelector('.scrollMe2');
+        let pos2 = -p1.scrollWidth;
+        let p1css;
+        let p2css;
+        let down = true;
+        var styleSheet = document.styleSheets[0];
+        for (items of styleSheet.rules) {
+            if (items.selectorText == ".scrollMe1") p1css = items;
+            if (items.selectorText == ".scrollMe2") p2css = items;
+        }
         let moveIt = () => {
-            if (pos > window.innerWidth) pos=-2000;
-            if (pos2 > window.innerWidth) pos2=-2000;
-            moveableObject1.style.transform = `translateX(${pos}px)`;
-            moveableObject2.style.transform = `translateX(${pos2}px)`;
-            pos++;
-            pos2++;
+            if (down) {
+                if (pos > window.innerWidth) pos=pos2-p1.scrollWidth;
+                if (pos2 > window.innerWidth) pos2=pos-p1.scrollWidth;
+            }
+            else {
+                if (pos < -p1.scrollWidth) pos=pos2+p1.scrollWidth;
+                if (pos2 < -p1.scrollWidth) pos2=pos+p1.scrollWidth;
+            }
+            p1css.style.transform = `translateX(${pos}px)`;
+            p2css.style.transform = `translateX(${pos2}px)`;
+            if (down) {
+                pos++;
+                pos2++;
+            } else {
+                pos--;
+                pos2--;
+            }
         }
         let myInterval = setInterval(moveIt, 1);
 
 
-        window.addEventListener('scroll', function(e) {
-            scollPosY = window.scrollY;
-            console.log(scollPosY);
-        });
+        var lastScrollTop = 0;
+        window.addEventListener("scroll", function(){
+            var st = window.pageYOffset || document.documentElement.scrollTop; 
+            if (st > lastScrollTop){
+                down = true;
+                pos += 10;
+                pos2 += 10;
+            } else {
+                down = false;
+                pos -= 10;
+                pos2 -= 10;
+            }
+            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        }, false);
+
+        let measurement = (window.innerWidth / p1.scrollWidth).toString();
+        console.log(`Amount of clones needed : ${parseInt(measurement.slice(0, 1)) + 1}`);
+        
     </script>
 </body>
 </html>
