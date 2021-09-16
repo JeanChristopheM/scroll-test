@@ -1,0 +1,26 @@
+@keyframes scroll1 {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+main {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size:6rem;
+}
+.scrollMe2 {
+    margin-top: -13.2rem;
+}
+/*.scrollMe1, .scrollMe2 {
+    position: absolute;
+}
+/*
+.scrollMe1 {
+    animation: 10s linear 0s infinite scroll1;
+}
+.scrollMe2 {
+    animation: 10s linear 5s infinite scroll1;
+} */

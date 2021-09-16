@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrollForMe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <p class="scrollMe1" style="transform: translateX(10px);">PBSC: registered: micromobility impact</p>
+        <p class="scrollMe2" style="transform: translateX(00px);">PBSC: registered: micromobility impact</p>
+    </main>
+    <script>
+        var scollPosY = 0;
+        let pos = 0;
+        let pos2 = -2000;
+        let moveableObject1 = document.querySelector('.scrollMe1');
+        let moveableObject2 = document.querySelector('.scrollMe2');
+        let moveIt = () => {
+            if (pos > window.innerWidth) pos=-2000;
+            if (pos2 > window.innerWidth) pos2=-2000;
+            moveableObject1.style.transform = `translateX(${pos}px)`;
+            moveableObject2.style.transform = `translateX(${pos2}px)`;
+            pos++;
+            pos2++;
+        }
+        let myInterval = setInterval(moveIt, 1);
+
+
+        window.addEventListener('scroll', function(e) {
+            scollPosY = window.scrollY;
+            console.log(scollPosY);
+        });
+    </script>
+</body>
+</html>
