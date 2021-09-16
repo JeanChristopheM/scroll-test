@@ -75,7 +75,7 @@
                 pos -= 50;
                 pos2 -= 50;
             }
-            lastScrollTop = st;
+            lastScrollTop = st <= 0 ? 0 : st;
         }, false);
 
         let measurement = (window.innerWidth / p1.scrollWidth).toString();

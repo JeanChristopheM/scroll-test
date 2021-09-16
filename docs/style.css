@@ -25,10 +25,13 @@ header {
 }
     .filler img {
         border-radius: 10rem;
+        display: block;
+        object-fit: scale-down;
     }
     .filler p {
         padding: 3rem;
-        font-size:3rem;
+        font-size:1rem;
+        flex:1;
     }
 .rail {
     overflow: hidden;
