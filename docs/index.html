@@ -60,12 +60,12 @@
             var st = window.pageYOffset || document.documentElement.scrollTop; 
             if (st > lastScrollTop){
                 down = true;
-                pos += 10;
-                pos2 += 10;
+                pos += 50;
+                pos2 += 50;
             } else {
                 down = false;
-                pos -= 10;
-                pos2 -= 10;
+                pos -= 50;
+                pos2 -= 50;
             }
             lastScrollTop = st;
         }, false);
